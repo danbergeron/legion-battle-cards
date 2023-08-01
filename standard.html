@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <title>Star Wars Legion: Standard Battle Cards</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Star Wars Legion: Standard Battle Card</title>
+    <link rel="stylesheet" href="./standard-style.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    />
+    <link rel="icon" href="./favicon.ico" type="image/x-icon" />
+  </head>
+  <header>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500&display=swap"
+      rel="stylesheet"
+    />
+    <button
+      id="homeBtn"
+      class="custom-btn btn-15 btn-home"
+      onclick="window.location.href='./index.html'"
+    >
+      <i class="material-icons">home</i>
+    </button>
+  </header>
+  <body>
+    <main>
+      <h1>Star Wars Legion: Standard Battle Cards</h1>
+      <span class="blue-turn"><h2>It is the blue players turn</h2></span>
+      <span class="red-turn"><h2>It is the red players turn</h2></span>
+      <div class="button-menu" class="center">
+        <div class="center">
+          <button id="shuffleBtn" class="custom-btn btn-15">Shuffle</button>
+          <button id="passBtn" class="custom-btn btn-15">Pass</button>
+        </div>
+      </div>
+      <div id="card-grid">
+        <div class="grid-container">
+          <div class="selected-card" id="ob-card-0"></div>
+          <div class="cards" id="ob-card-1"></div>
+          <div class="cards" id="ob-card-2"></div>
+          <div class="cards" id="ob-card-3"></div>
+          <div class="selected-card" id="co-card-0"></div>
+          <div class="cards" id="co-card-1"></div>
+          <div class="cards" id="co-card-2"></div>
+          <div class="cards" id="co-card-3"></div>
+          <div class="selected-card" id="de-card-0"></div>
+          <div class="cards" id="de-card-1"></div>
+          <div class="cards" id="de-card-2"></div>
+          <div class="cards" id="de-card-3"></div>
+        </div>
+        <div class="container-selected-grid">
+          <div class="cards" id="grid-item-1"></div>
+          <div class="cards" id="grid-item-2"></div>
+          <div class="cards" id="grid-item-3"></div>
+        </div>
+      </div>
+    </main>
+    <script type="module" src="cards.js"></script>
+  </body>
+</html>
