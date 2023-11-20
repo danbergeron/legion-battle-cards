@@ -36,16 +36,27 @@
   <body>
     <main>
       <h1 style="margin-top: 0.5em">Standard Battle Cards</h1>
-      <span class="blue-turn" style="text-align: center"
-        ><h3>It is the blue players turn</h3></span
-      >
-      <span class="red-turn" style="text-align: center"
-        ><h3>It is the red players turn</h3></span
-      >
+
       <div class="button-menu button-margins" class="center">
         <div class="center">
           <button id="shuffleBtn" class="btn btn-primary">Shuffle</button>
           <button id="passBtn" class="btn btn-primary">Pass</button>
+        </div>
+      </div>
+
+      <div class="blue-turn">
+        <div
+          class="alert alert-primary"
+          role="alert"
+          style="text-align: center"
+        >
+          <h3>It is the blue players turn</h3>
+        </div>
+      </div>
+
+      <div class="red-turn">
+        <div class="alert alert-danger" role="alert" style="text-align: center">
+          <h3>It is the red players turn</h3>
         </div>
       </div>
 

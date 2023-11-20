@@ -43,12 +43,12 @@ h2 {
 }
 
 .blue-turn {
-  color: rgb(20, 111, 180);
+  margin-top: -10px;
 }
 
 .red-turn {
-  color: rgb(167, 31, 31);
   display: none;
+  margin-top: -10px;
 }
 
 .custom-btn {
@@ -96,6 +96,7 @@ h2 {
   position: fixed;
   top: 0;
   left: 0;
+  z-index: 500;
 }
 
 .btn-home {
