@@ -22,18 +22,39 @@ if (document.location.pathname.includes("skirmish")) {
     conditionCards = module.conditionCards;
     deploymentCards = module.deploymentCards;
     console.log(objectiveCards);
+    console.log(conditionCards);
     console.log(deploymentCards);
-
     // Call any functions that depend on the imported arrays here.
     loadState();
     renderCards();
     console.log(turnTracker);
   });
+} else if (document.location.pathname.includes("json-cards")) {
+  // Retrieve the card arrays from localStorage for the json-cards page
+  objectiveCards = JSON.parse(localStorage.getItem("objectiveCards")) || [];
+  conditionCards = JSON.parse(localStorage.getItem("conditionCards")) || [];
+  deploymentCards = JSON.parse(localStorage.getItem("deploymentCards")) || [];
+
+  // Check if the arrays were successfully retrieved
+  if (
+    objectiveCards.length &&
+    conditionCards.length &&
+    deploymentCards.length
+  ) {
+    console.log(objectiveCards);
+    console.log(conditionCards);
+    console.log(deploymentCards);
+
+    shuffleCards(objectiveCards);
+    shuffleCards(conditionCards);
+    shuffleCards(deploymentCards);
+    loadState();
+    renderCards();
+    console.log(turnTracker);
+  }
 } else {
   // Handle any other pages.
 }
-
-console.log(objectiveCards);
 
 const shuffleButton = document.getElementById("shuffleBtn");
 shuffleButton.addEventListener("click", reShuffleCards);
@@ -93,9 +114,6 @@ function loadState() {
     console.log("there's NO saved state.");
   }
 }
-
-console.log(turnTracker);
-
 function saveCardState() {
   const dismissedCards = Array.from(
     document.querySelectorAll(".dismissed-card")

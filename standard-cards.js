@@ -9,11 +9,11 @@ export const objectiveCards = createCardArray("objective", [
   "Bombing-Run",
   "Breakthrough",
   "Hostage-Exchange",
-  "Intercept-Transmissions",
+  "Intercept-the-Transmissions",
   "Key-Positions",
   "Payload",
   "Recover-the-Supplies",
-  "Sabotag-the-Moisture-Vaporators",
+  "Sabotage-the-Moisture-Vaporators",
 ]);
 
 export const conditionCards = createCardArray("condition", [

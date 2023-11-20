@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-bs-theme="dark">
   <title>Star Wars Legion: Battle Cards</title>
   <head>
     <meta charset="UTF-8" />
@@ -8,7 +8,75 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Star Wars Legion: Battle Cards</title>
     <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="./bootstrap.min.css" />
     <link rel="icon" href="./favicon.ico" type="image/x-icon" />
+
+    <style>
+      /* Basic styling for the modal */
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.4);
+      }
+
+      /* Modal content */
+      .modal-content {
+        margin: 10% auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 50%; /* Adjust width for desktop */
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        text-align: center; /* Center text */
+      }
+
+      /* The close button */
+      .close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+        position: absolute;
+      }
+
+      .close:hover,
+      .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+      }
+
+      /* Center the form elements */
+      .form-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+
+      /* Style for the textbox */
+      #json {
+        margin: 10px 0;
+      }
+
+      /* Style for the submit button */
+      #submit {
+        margin-top: 20px;
+      }
+
+      /* Responsive styling for mobile devices */
+      @media (max-width: 400px) {
+        .modal-content {
+          width: 80%; /* Adjust width for mobile */
+          margin: 50px auto; /* Increase top margin for mobile */
+        }
+      }
+    </style>
   </head>
   <header>
     <link
@@ -22,36 +90,117 @@
   </header>
   <body>
     <main>
-      <h1>Star Wars Legion: Battle Cards</h1>
+      <h1 style="padding: 0.5em">Star Wars Legion: Battle Cards</h1>
+
       <section>
-        <h2>Standard Game</h2>
-        <div class="button-menu" class="center">
-          <button
-            id="shuffleBtn"
-            class="custom-btn btn-15"
-            onclick="window.location.href='./standard.html';"
-          >
-            Quick Play
-          </button>
-          <button id="passBtn" class="custom-btn btn-15" style="opacity: 50%">
-            Build deck
-          </button>
-          <p><i>*Decking bulding coming soon!</i></p>
+        <div class="bs-componen">
+          <div class="card text-white bg-dark mb-3" style="max-width: 20rem">
+            <div class="card-header">Standard Game</div>
+            <div class="card-body">
+              <p class="card-text text-center">
+                Play with a shuffled deck of all 24 standard battle cards.
+              </p>
+              <button
+                type="button"
+                class="btn btn-primary"
+                style="width: auto"
+                id="shuffleBtn"
+                onclick="window.location.href='./standard.html';"
+              >
+                Quick Play
+              </button>
+            </div>
+            <ul class="list-group list-group-flush"></ul>
+            <div class="card-body">
+              <p class="card-text text-center">
+                Use the battle cards from your favourite Star Wars Legion list
+                builder.
+              </p>
+              <button
+                type="button"
+                class="btn btn-primary"
+                style="width: auto"
+                id="myBtn"
+                onclick="handleSubmit()"
+              >
+                Import JSON
+              </button>
+            </div>
+            <div id="myModal" class="modal">
+              <!-- Modal content -->
+              <div class="card border-primary mb-3 modal-content">
+                <span class="close">&times;</span>
+                <h2>Import TTL JSON</h2>
+                <p>Enter the JSON below and press submit.</p>
+                <textarea id="json" rows="10" cols="50"></textarea><br />
+                <button id="submit" class="btn btn-primary">Submit</button>
+                <!-- Inside your modal -->
+                <div
+                  id="success-message"
+                  style="display: none; color: green; margin-top: 10px"
+                ></div>
+                <div
+                  id="error-message"
+                  style="display: none; color: red; margin-top: 10px"
+                ></div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
       <section>
-        <h2>Skirmish Game</h2>
-        <div class="button-menu" class="center">
-          <button
-            id="shuffleBtn"
-            class="custom-btn btn-15"
-            onclick="window.location.href='./skirmish.html';"
-          >
-            Quick Play
-          </button>
+        <div class="card text-white bg-dark mb-3" style="max-width: 20rem">
+          <div class="card-header">Skirmish Game</div>
+          <div class="card-body">
+            <p class="card-text text-center">
+              Play with a shuffled deck of all 12 skirmish battle cards.
+            </p>
+            <button
+              type="button"
+              class="btn btn-primary"
+              style="width: auto"
+              id="shuffleBtn"
+              onclick="window.location.href='./skirmish.html';"
+            >
+              Quick Play
+            </button>
+          </div>
         </div>
       </section>
     </main>
+    <script>
+      // Get the modal
+      var modal = document.getElementById("myModal");
+
+      // Get the button that opens the modal
+      var btn = document.getElementById("myBtn");
+
+      // Get the <span> element that closes the modal
+      var span = document.getElementsByClassName("close")[0];
+
+      // When the user clicks on the button, open the modal
+      btn.onclick = function () {
+        modal.style.display = "block";
+      };
+
+      // When the user clicks on <span> (x), close the modal
+      span.onclick = function () {
+        modal.style.display = "none";
+      };
+
+      // When the user clicks anywhere outside of the modal, close it
+      window.onclick = function (event) {
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
+      };
+    </script>
+    <script type="module" src="./modal-handlers.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
   </body>
 </html>

@@ -1,12 +1,8 @@
-main {
-  background-color: var(--bs-secondary-bg-rgb);
-}
-
 @media (min-width: 1460px) {
   .container-selected-grid {
     grid-template-columns: repeat(3, minmax(20vw, 1fr));
-    grid-template-rows: repeat(1, minmax(33.5vw, 1fr));
-    margin: 0 160px 0 !important;
+    grid-template-rows: repeat(1, minmax(22vw, 1fr));
+    margin: 0 20px 0 !important;
   }
   .cards,
   .selected-card {
@@ -14,7 +10,7 @@ main {
       23vw * (100vw / 1200px)
     ); /* set width proportionally to the viewport width */
     height: calc(
-      33vw * (100vw / 1200px)
+      25vw * (100vw / 1200px)
     ); /* set height proportionally to the viewport width */
   }
 }
@@ -22,8 +18,8 @@ main {
 @media (max-width: 1459px) and (min-width: 1200px) {
   .container-selected-grid {
     grid-template-columns: repeat(3, minmax(20vw, 1fr));
-    grid-template-rows: repeat(1, minmax(32vw, 1fr));
-    margin: 0 160px 0 !important;
+    grid-template-rows: repeat(1, minmax(20.5vw, 1fr));
+    margin: 0 20px 0 !important;
   }
   .cards,
   .selected-card {
@@ -38,8 +34,8 @@ main {
 
 @media (max-width: 1199px) and (min-width: 992px) {
   .container-selected-grid {
-    grid-template-columns: repeat(3, minmax(16vw, 1fr));
-    grid-template-rows: repeat(1, minmax(40.5vw, 1fr));
+    grid-template-columns: repeat(3, minmax(20vw, 1fr));
+    grid-template-rows: repeat(1, minmax(21vw, 1fr));
     margin: 0 20px 0 !important;
   }
   .cards,
@@ -55,9 +51,10 @@ main {
 
 @media (max-width: 991px) and (min-width: 850px) {
   .container-selected-grid {
-    grid-template-columns: repeat(3, minmax(16vw, 1fr));
-    grid-template-rows: repeat(1, minmax(40vw, 1fr));
-    margin: 0 20px 0 !important;
+    grid-template-columns: repeat(1, minmax(50vw, 1fr));
+    grid-template-rows: repeat(3, minmax(41vw, 1fr));
+    margin: 0 auto !important;
+    width: 60% !important;
   }
   .cards,
   .selected-card {
@@ -72,9 +69,10 @@ main {
 
 @media (max-width: 849px) and (min-width: 750px) {
   .container-selected-grid {
-    grid-template-columns: repeat(3, minmax(16vw, 1fr));
-    grid-template-rows: repeat(1, minmax(38vw, 1fr));
-    margin: 0 20px 0 !important;
+    grid-template-columns: repeat(1, minmax(50vw, 1fr));
+    grid-template-rows: repeat(3, minmax(41vw, 1fr));
+    margin: 0 auto !important;
+    width: 60% !important;
   }
   .cards,
   .selected-card {
@@ -89,9 +87,10 @@ main {
 
 @media (max-width: 749px) and (min-width: 650px) {
   .container-selected-grid {
-    grid-template-columns: repeat(3, minmax(16vw, 1fr));
-    grid-template-rows: repeat(1, minmax(38vw, 1fr));
-    margin: 0 20px 0 !important;
+    grid-template-columns: repeat(1, minmax(50vw, 1fr));
+    grid-template-rows: repeat(3, minmax(41vw, 1fr));
+    margin: 0 auto !important;
+    width: 60% !important;
   }
   .cards,
   .selected-card {
@@ -106,9 +105,10 @@ main {
 
 @media (max-width: 649px) and (min-width: 500px) {
   .container-selected-grid {
-    grid-template-columns: repeat(3, minmax(16vw, 1fr));
-    grid-template-rows: repeat(1, minmax(35vw, 1fr));
-    margin: 0 20px 0 !important;
+    grid-template-columns: repeat(1, minmax(50vw, 1fr));
+    grid-template-rows: repeat(3, minmax(41vw, 1fr));
+    margin: 0 auto !important;
+    width: 60% !important;
   }
   .cards,
   .selected-card {
@@ -123,10 +123,10 @@ main {
 
 @media (max-width: 499px) {
   .container-selected-grid {
-    grid-template-columns: repeat(1, minmax(40vw, 1fr));
-    grid-template-rows: repeat(3, minmax(120vw, 1fr));
+    grid-template-columns: repeat(1, minmax(50vw, 1fr));
+    grid-template-rows: repeat(3, minmax(61vw, 1fr));
+    margin: 0 auto !important;
     padding: 1em 1.2em 1.4em 1em !important;
-    margin: 0em !important;
     column-gap: 1.1em !important;
     row-gap: 1.5em !important;
   }
@@ -146,8 +146,8 @@ main {
 @media (min-width: 1801px) {
   .grid-container {
     grid-template-columns: repeat(4, minmax(20.5vw, 1fr));
-    grid-template-rows: repeat(3, minmax(30vw, 1fr));
-    margin: 0 90px !important;
+    grid-template-rows: repeat(3, minmax(16.5vw, 1fr));
+    margin: 0 20px !important;
   }
   .cards,
   .selected-card {
@@ -163,7 +163,7 @@ main {
 @media (max-width: 1800px) and (min-width: 1200px) {
   .grid-container {
     grid-template-columns: repeat(4, minmax(20vw, 1fr));
-    grid-template-rows: repeat(3, minmax(32vw, 1fr));
+    grid-template-rows: repeat(3, minmax(16vw, 1fr));
   }
   .cards,
   .selected-card {
@@ -171,7 +171,7 @@ main {
       23vw * (100vw / 1200px)
     ); /* set width proportionally to the viewport width */
     height: calc(
-      33vw * (100vw / 1200px)
+      15vw * (100vw / 1200px)
     ); /* set height proportionally to the viewport width */
   }
 }
@@ -179,7 +179,7 @@ main {
 @media (max-width: 1199px) and (min-width: 992px) {
   .grid-container {
     grid-template-columns: repeat(4, minmax(16vw, 1fr));
-    grid-template-rows: repeat(3, minmax(30.5vw, 1fr));
+    grid-template-rows: repeat(3, minmax(15.5vw, 1fr));
   }
   .cards,
   .selected-card {
@@ -194,8 +194,8 @@ main {
 
 @media (max-width: 991px) and (min-width: 500px) {
   .grid-container {
-    grid-template-columns: repeat(4, minmax(20vw, 1fr));
-    grid-template-rows: repeat(3, minmax(30.5vw, 1fr));
+    grid-template-columns: repeat(2, minmax(20vw, 1fr));
+    grid-template-rows: repeat(6, minmax(33vw, 1fr));
     padding: 1em 1.2em 1.4em 1em !important;
     margin: 0em !important;
     column-gap: 1.1em !important;
@@ -214,8 +214,8 @@ main {
 
 @media (max-width: 499px) {
   .grid-container {
-    grid-template-columns: repeat(2, minmax(20vw, 1fr));
-    grid-template-rows: repeat(6, minmax(60vw, 1fr));
+    grid-template-columns: repeat(1, minmax(20vw, 1fr));
+    grid-template-rows: repeat(12, minmax(60vw, 1fr));
     padding: 1em 1.2em 1.4em 1em !important;
     margin: 0em !important;
     column-gap: 1.1em !important;
@@ -234,7 +234,7 @@ main {
 
 .grid-container {
   display: grid;
-  background-color: #43617a;
+  background-color: #60798e;
   padding: 1.5em 1.8em 1.5em 1.5em;
   row-gap: 2em;
   column-gap: 1.5em;
@@ -269,152 +269,4 @@ main {
   outline: none;
   border-color: #9ecaed;
   box-shadow: 0 0 10px #9ecaed, 9px 8px 5px rgb(46, 46, 46);
-}
-
-.center {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 50px;
-}
-
-.button-menu {
-  /* border: 2px solid black; */
-  display: table;
-  position: relative;
-  margin: 0 auto;
-  margin-bottom: 20px;
-}
-
-button {
-  margin: auto;
-  width: 100px;
-  height: 50px;
-  outline: none;
-}
-
-h1 {
-  font-family: "Arial";
-  text-align: center;
-}
-
-h2 {
-  font-family: "Arial";
-  text-align: center;
-  color: #e1e0e0;
-}
-
-body {
-  background-color: darkgray;
-}
-
-.dismissed-card {
-  border-radius: 15px;
-  filter: blur(0.5px) grayscale(100%);
-  box-shadow: 0px 0px 0px rgb(46, 46, 46);
-  text-align: center;
-  background-size: cover;
-  object-fit: contain;
-}
-
-.blue-turn {
-  color: rgb(20, 111, 180);
-}
-
-.red-turn {
-  color: rgb(167, 31, 31);
-  display: none;
-}
-
-.button-description {
-  text-align: center !important;
-  margin: -5px auto 30px; /* Adjust spacing as needed */
-  color: #000000; /* Change the color as per your theme */
-  font-size: 0.7em; /* Adjust font size as needed */
-  background-color: #e1e0e0;
-  padding: 1em;
-  border-radius: 0.3em;
-  font-family: "Arial";
-  filter: drop-shadow(2px 2px 3px);
-  width: 50%;
-  display: block;
-}
-
-.custom-btn {
-  width: 130px;
-  height: 40px;
-  padding: 10px 25px;
-  border: 2px solid #000;
-  font-family: "Lato", sans-serif;
-  font-weight: 500;
-  background: transparent;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  position: relative;
-  display: table;
-  margin: 0px auto 20px;
-}
-
-.btn-15 {
-  background: #000;
-  color: #fff;
-  z-index: 1;
-}
-.btn-15:after {
-  position: absolute;
-  content: "";
-  width: 0;
-  height: 100%;
-  top: 0;
-  right: 0;
-  z-index: -1;
-  background: #ffffff;
-  transition: all 0.3s ease;
-}
-.btn-15:hover {
-  color: #000;
-}
-.btn-15:hover:after {
-  left: 0;
-  width: 100%;
-}
-.btn-15:active {
-  top: 2px;
-}
-
-#top-left-button {
-  position: fixed;
-  top: 0;
-  left: 0;
-}
-
-section {
-  display: grid;
-  row-gap: 2em;
-  column-gap: 0.5em;
-  margin: 0 10px 10px;
-  padding-bottom: 25px;
-  border-radius: 10px;
-  width: 350px;
-  margin: 0 auto;
-}
-
-.btn {
-  display: block !important;
-  margin: auto !important;
-}
-
-@media (max-width: 499px) {
-  section {
-    width: 75% !important;
-  }
-}
-
-.button-menu {
-  margin-bottom: 0px;
-  margin-top: -35px;
-}
-i {
-  margin: auto;
-  display: table;
 }
