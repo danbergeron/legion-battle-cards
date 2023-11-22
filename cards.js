@@ -247,23 +247,68 @@ function nextPlayer() {
 
 function boardState() {
   const playerTurns = [
-    { turn: 1, color: "#8e6060", label: "Red's Turn" },
-    { turn: 2, color: "#60798e", label: "Blue's Turn" },
-    { turn: 3, color: "#8e6060", label: "Red's Turn" },
+    {
+      turn: 1,
+      color: "#8e6060",
+      label: "Red's Turn",
+      targetDivClass: "red-turn",
+      btnClass: "btn-danger",
+    },
+    {
+      turn: 2,
+      color: "#60798e",
+      label: "Blue's Turn",
+      targetDivClass: "blue-turn",
+      btnClass: "btn-primary",
+    },
+    // Assuming turnTracker goes back to 1 after 3
+    {
+      turn: 3,
+      color: "#8e6060",
+      label: "Red's Turn",
+      targetDivClass: "red-turn",
+      btnClass: "btn-danger",
+    },
   ];
 
   const currentTurn = playerTurns.find(({ turn }) => turn === turnTracker);
 
   if (currentTurn) {
-    $(".blue-turn").toggle(currentTurn.turn === 2);
-    $(".red-turn").toggle(currentTurn.turn !== 2);
+    // Hide both turn divs and buttons to start fresh
+    $(".blue-turn, .red-turn").hide();
+    $("#passBtn, #inactivePassBtn").hide();
+
+    // Show the current turn div
+    $("." + currentTurn.targetDivClass).show();
+
+    // Detach event listeners from both buttons
+    $("#passBtn, #inactivePassBtn").off("click");
+
+    // Assign the 'passBtn' ID to the active button and 'inactivePassBtn' to the other
+    const activeButton = $("." + currentTurn.targetDivClass + " button");
+    const inactiveButton = $(".blue-turn button, .red-turn button").not(
+      activeButton
+    );
+
+    activeButton
+      .attr("id", "passBtn")
+      .removeClass("btn-primary btn-danger")
+      .addClass(currentTurn.btnClass)
+      .show();
+
+    inactiveButton.attr("id", "inactivePassBtn");
+
+    // Reattach the event listener to the new active button
+    $("#passBtn").on("click", nextPlayer);
+
+    // Update the background color of the grid container
     document.querySelector(".grid-container").style.backgroundColor =
       currentTurn.color;
     console.log(currentTurn.label);
   } else {
-    $(".blue-turn").hide();
-    $(".red-turn").hide();
-    passButton.style.display = "none";
+    // If no turn is active
+    $(".blue-turn, .red-turn").hide();
+    $("#passBtn, #inactivePassBtn").hide();
     topFunction();
     displaySelectedCards();
   }

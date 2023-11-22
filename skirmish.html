@@ -25,38 +25,90 @@
       href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500&display=swap"
       rel="stylesheet"
     />
-    <button
-      id="homeBtn"
-      class="btn btn-primary btn-home"
-      onclick="window.location.href='./index.html'"
-    >
-      <i class="material-icons">home</i>
-    </button>
+
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">Star Wars Legion: Battle Cards</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                aria-current="page"
+                id="homeBtn"
+                href="./index.html"
+                >Home</a
+              >
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link active" href="./skirmish.html">Skirmish</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Standard Game
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a class="dropdown-item" href="./standard.html">Quick Play</a>
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="#"
+                    id="myBtn"
+                    onclick="handleSubmit()"
+                    >Import JSON</a
+                  >
+                </li>
+              </ul>
+            </li>
+          </ul>
+          <button id="shuffleBtn" type="button" class="btn btn-outline-success">
+            Shuffle
+          </button>
+        </div>
+      </div>
+    </nav>
   </header>
   <body>
     <main>
-      <h1 style="margin-top: 0.5em">Skirmish Battle Cards</h1>
-
-      <div class="button-menu button-margins" class="center">
-        <div class="center">
-          <button id="shuffleBtn" class="btn btn-primary">Shuffle</button>
-          <button id="passBtn" class="btn btn-primary">Pass</button>
-        </div>
-      </div>
-
       <div class="blue-turn">
-        <div
-          class="alert alert-primary"
-          role="alert"
-          style="text-align: center"
-        >
-          <h3>It is the blue players turn</h3>
+        <div class="alert alert-primary role-alert">
+          <div class="turn-info">
+            <h3>Blue player's turn</h3>
+            <button id="passBtn" type="button" class="btn btn-primary">
+              Pass
+            </button>
+          </div>
         </div>
       </div>
 
-      <div class="red-turn">
-        <div class="alert alert-danger" role="alert" style="text-align: center">
-          <h3>It is the red players turn</h3>
+      <div class="red-turn" style="display: none">
+        <div class="alert alert-danger role-alert">
+          <div class="turn-info">
+            <h3>Red player's turn</h3>
+            <button id="inactivePassBtn" type="button" class="btn btn-danger">
+              Pass
+            </button>
+          </div>
         </div>
       </div>
 
@@ -75,14 +127,66 @@
           <div class="cards" id="de-card-2"></div>
           <div class="cards" id="de-card-3"></div>
         </div>
-        <div class="container-selected-grid">
+        <div class="container-selected-grid container-gap">
           <div class="cards" id="grid-item-1"></div>
           <div class="cards" id="grid-item-2"></div>
           <div class="cards" id="grid-item-3"></div>
         </div>
       </div>
-    </main>
 
+      <div id="myModal" class="modal">
+        <!-- Modal content -->
+        <div class="card border-primary mb-3 modal-content">
+          <span class="close">&times;</span>
+          <h2>Import TTL JSON</h2>
+          <p>Enter the JSON below and press submit.</p>
+          <textarea id="json" rows="10" cols="50"></textarea>
+          <div
+            id="success-message"
+            class="alert alert-success"
+            role="alert"
+            style="display: none; margin-top: 10px; margin-bottom: -5px"
+          ></div>
+          <div
+            id="error-message"
+            class="alert alert-danger"
+            role="alert"
+            style="display: none; margin-top: 10px; margin-bottom: -5px"
+          ></div>
+          <br />
+          <button id="submit" class="btn btn-primary">Submit</button>
+          <!-- Inside your modal -->
+        </div>
+      </div>
+    </main>
+    <script>
+      // Get the modal
+      var modal = document.getElementById("myModal");
+
+      // Get the button that opens the modal
+      var btn = document.getElementById("myBtn");
+
+      // Get the <span> element that closes the modal
+      var span = document.getElementsByClassName("close")[0];
+
+      // When the user clicks on the button, open the modal
+      btn.onclick = function () {
+        modal.style.display = "block";
+      };
+
+      // When the user clicks on <span> (x), close the modal
+      span.onclick = function () {
+        modal.style.display = "none";
+      };
+
+      // When the user clicks anywhere outside of the modal, close it
+      window.onclick = function (event) {
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
+      };
+    </script>
+    <script type="module" src="./modal-handlers.js"></script>
     <script type="module" src="cards.js"></script>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"

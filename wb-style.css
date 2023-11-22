@@ -5,24 +5,6 @@
   height: 50px;
 }
 
-.button-menu {
-  /* border: 2px solid black; */
-  display: block;
-  position: relative;
-  margin: 0 auto;
-  width: 270px;
-  margin-bottom: 30px;
-  margin-top: 20px;
-}
-
-button {
-  margin: auto;
-  width: 100px;
-  height: 50px;
-  margin: 20px;
-  outline: none;
-}
-
 h1 {
   font-family: "Arial";
   text-align: center;
@@ -43,71 +25,90 @@ h2 {
 }
 
 .blue-turn {
-  margin-top: -10px;
 }
 
 .red-turn {
   display: none;
-  margin-top: -10px;
-}
-
-.custom-btn {
-  width: 130px;
-  height: 40px;
-  padding: 10px 25px;
-  border: 2px solid #000;
-  font-family: "Lato", sans-serif;
-  font-weight: 500;
-  background: transparent;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  position: relative;
-  display: inline-block;
-}
-
-.btn-15 {
-  background: #000;
-  color: #fff;
-  z-index: 1;
-}
-.btn-15:after {
-  position: absolute;
-  content: "";
-  width: 0;
-  height: 100%;
-  top: 0;
-  right: 0;
-  z-index: -1;
-  background: #ffffff;
-  transition: all 0.3s ease;
-}
-.btn-15:hover {
-  color: #000;
-}
-.btn-15:hover:after {
-  left: 0;
-  width: 100%;
-}
-.btn-15:active {
-  top: 2px;
-}
-
-#homeBtn {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 500;
-}
-
-.btn-home {
-  margin: 0px;
-
-  width: 50px;
-  height: 50px;
 }
 
 .material-icons {
   font-size: 27px;
   top: -14px;
   left: -18px;
+}
+
+.turn-info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px; /* Adjust the gap as needed */
+}
+
+h3 {
+  margin: 0; /* Removes default margin to align properly with button */
+  font-family: "Arial";
+}
+
+/* Keep the rest of your CSS the same */
+
+/* Basic styling for the modal */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+/* Modal content */
+.modal-content {
+  margin: 10% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 50%; /* Adjust width for desktop */
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  text-align: center; /* Center text */
+}
+
+/* The close button */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  position: absolute;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Center the form elements */
+.form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Style for the textbox */
+#json {
+  margin: 10px 0;
+}
+
+/* Style for the submit button */
+#submit {
+  margin-top: 20px;
+}
+
+.container-gap {
+  margin-top: 1.2em !important;
+  margin-bottom: 2em;
 }
