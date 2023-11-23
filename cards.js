@@ -75,8 +75,12 @@ function getLocalStorageKey(baseKey) {
 }
 
 function saveState() {
+  // Generate a unique key for localStorage based on the page
+  const pageKey = window.location.pathname.split("/").pop().split(".").shift();
+  const gameStateKey = `${pageKey}-gameState`;
+
   localStorage.setItem(
-    getLocalStorageKey("gameState"),
+    gameStateKey,
     JSON.stringify({
       turnTracker: turnTracker,
       objectiveCards: objectiveCards,
@@ -87,24 +91,25 @@ function saveState() {
     })
   );
 }
+function getLocalStorageKey(baseKey) {
+  // Use a base name for the local storage key that includes the page identifier
+  const pageKey = window.location.pathname.split("/").pop().split(".").shift();
+  return `${pageKey}-${baseKey}`;
+}
 
 function loadState() {
   const savedState = localStorage.getItem(getLocalStorageKey("gameState"));
   console.log(savedState);
   if (savedState) {
-    const state = JSON.parse(savedState, (key, value) => {
-      if (
-        key === "objectiveCards" ||
-        key === "conditionCards" ||
-        key === "deploymentCards"
-      ) {
-        return value.map((name) => `./battle-cards/${key}_${name}.${fileExt}`);
-      }
-      return value;
-    });
+    const state = JSON.parse(savedState);
     turnTracker = state.turnTracker;
+    objectiveCards = state.objectiveCards;
+    conditionCards = state.conditionCards;
+    deploymentCards = state.deploymentCards;
     selectedCards = state.selectedCards;
     lastClickedFace = state.lastClickedFace;
+
+    // Restore the card states if they were previously saved
     restoreCardState();
     boardState();
   } else {
@@ -112,10 +117,11 @@ function loadState() {
     turnTracker = 0;
     selectedCards = [];
 
+    // Only shuffle the cards if there is no saved state
     shuffleCards(objectiveCards);
-    shuffleCards(deploymentCards);
     shuffleCards(conditionCards);
-    console.log("there's NO saved state.");
+    shuffleCards(deploymentCards);
+    console.log("There's NO saved state.");
   }
 }
 function saveCardState() {
@@ -126,20 +132,21 @@ function saveCardState() {
     bgUrl: card.style.backgroundImage,
   }));
 
-  const selectedCards = Array.from(
+  const selectedCardsArray = Array.from(
     document.querySelectorAll(".selected-card")
   ).map((card) => ({
     id: card.id,
     bgUrl: card.style.backgroundImage,
   }));
 
+  // Use the getLocalStorageKey function to store the state with the page-specific key
   localStorage.setItem(
     getLocalStorageKey("dismissedCards"),
     JSON.stringify(dismissedCards)
   );
   localStorage.setItem(
     getLocalStorageKey("selectedCards"),
-    JSON.stringify(selectedCards)
+    JSON.stringify(selectedCardsArray)
   );
 }
 
