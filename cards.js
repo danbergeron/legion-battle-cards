@@ -66,13 +66,17 @@ const homeButton = document.getElementById("homeBtn");
 homeButton.addEventListener("click", returnHome);
 
 function returnHome() {
-  localStorage.removeItem("gameState");
+  localStorage.removeItem(getLocalStorageKey("gameState"));
   window.location.href = "./index.html";
+}
+
+function getLocalStorageKey(baseKey) {
+  return `${document.location.pathname.replace(/\//g, "")}_${baseKey}`;
 }
 
 function saveState() {
   localStorage.setItem(
-    "gameState",
+    getLocalStorageKey("gameState"),
     JSON.stringify({
       turnTracker: turnTracker,
       objectiveCards: objectiveCards,
@@ -85,7 +89,7 @@ function saveState() {
 }
 
 function loadState() {
-  const savedState = localStorage.getItem("gameState");
+  const savedState = localStorage.getItem(getLocalStorageKey("gameState"));
   console.log(savedState);
   if (savedState) {
     const state = JSON.parse(savedState, (key, value) => {
@@ -129,14 +133,22 @@ function saveCardState() {
     bgUrl: card.style.backgroundImage,
   }));
 
-  localStorage.setItem("dismissedCards", JSON.stringify(dismissedCards));
-  localStorage.setItem("selectedCards", JSON.stringify(selectedCards));
+  localStorage.setItem(
+    getLocalStorageKey("dismissedCards"),
+    JSON.stringify(dismissedCards)
+  );
+  localStorage.setItem(
+    getLocalStorageKey("selectedCards"),
+    JSON.stringify(selectedCards)
+  );
 }
 
 function restoreCardState() {
   const dismissedCards =
-    JSON.parse(localStorage.getItem("dismissedCards")) || [];
-  const selectedCards = JSON.parse(localStorage.getItem("selectedCards")) || [];
+    JSON.parse(localStorage.getItem(getLocalStorageKey("dismissedCards"))) ||
+    [];
+  const selectedCards =
+    JSON.parse(localStorage.getItem(getLocalStorageKey("selectedCards"))) || [];
 
   dismissedCards.forEach(({ id, bgUrl }) => {
     const card = document.getElementById(id);
@@ -156,6 +168,7 @@ function restoreCardState() {
 }
 
 function reShuffleCards() {
+  localStorage.removeItem(getLocalStorageKey("gameState"));
   if ((passButton.style.display = "none")) {
     location.reload();
   }
