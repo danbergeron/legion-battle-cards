@@ -24,13 +24,6 @@ h2 {
   object-fit: contain;
 }
 
-.blue-turn {
-}
-
-.red-turn {
-  display: none;
-}
-
 .material-icons {
   font-size: 27px;
   top: -14px;
