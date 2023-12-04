@@ -71,15 +71,16 @@ function returnHome() {
 }
 
 function getLocalStorageKey(baseKey) {
-  // Use a base name for the local storage key that includes the page identifier
-  const pageKey = window.location.pathname.split("/").pop().split(".").shift();
-  return `${pageKey}-${baseKey}`;
+  // This will create a base key including the normalized path as a unique identifier for the page
+  const path = window.location.pathname
+    .replace(/^\//, "")
+    .replace(/\/$/, "")
+    .replace(/\//g, "_");
+  return `${path}_${baseKey}`;
 }
 
 function saveState() {
-  // Generate a unique key for localStorage based on the page
-  const pageKey = window.location.pathname.split("/").pop().split(".").shift();
-  const gameStateKey = `${pageKey}-gameState`;
+  const gameStateKey = getLocalStorageKey("gameState");
 
   localStorage.setItem(
     gameStateKey,
