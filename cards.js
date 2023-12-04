@@ -94,11 +94,8 @@ function saveState() {
     })
   );
 }
-function getLocalStorageKey(baseKey) {
-  // Use a base name for the local storage key that includes the page identifier
-  const pageKey = window.location.pathname.split("/").pop().split(".").shift();
-  return `${pageKey}-${baseKey}`;
-}
+
+// ...
 
 function loadState() {
   const savedState = localStorage.getItem(getLocalStorageKey("gameState"));
