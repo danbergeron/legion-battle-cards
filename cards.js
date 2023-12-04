@@ -71,7 +71,9 @@ function returnHome() {
 }
 
 function getLocalStorageKey(baseKey) {
-  return `${document.location.pathname.replace(/\//g, "")}_${baseKey}`;
+  // Use a base name for the local storage key that includes the page identifier
+  const pageKey = window.location.pathname.split("/").pop().split(".").shift();
+  return `${pageKey}-${baseKey}`;
 }
 
 function saveState() {
