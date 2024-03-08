@@ -11,7 +11,7 @@ if (document.location.pathname.includes("skirmish")) {
     conditionCards = module.conditionCards;
     deploymentCards = module.deploymentCards;
 
-    // Call any functions that depend on the imported arrays here.
+    // Loads cached selected cards (if previous session exists) and renders cards
     loadState();
     renderCards();
     console.log(turnTracker);
@@ -24,7 +24,8 @@ if (document.location.pathname.includes("skirmish")) {
     console.log(objectiveCards);
     console.log(conditionCards);
     console.log(deploymentCards);
-    // Call any functions that depend on the imported arrays here.
+
+    // Loads cached selected cards (if previous session exists) and renders cards
     loadState();
     renderCards();
     console.log(turnTracker);
@@ -53,7 +54,6 @@ if (document.location.pathname.includes("skirmish")) {
     console.log(turnTracker);
   }
 } else {
-  // Handle any other pages.
 }
 
 const shuffleButton = document.getElementById("shuffleBtn");
@@ -281,7 +281,6 @@ function boardState() {
       targetDivClass: "blue-turn",
       btnClass: "btn-primary",
     },
-    // Assuming turnTracker goes back to 1 after 3
     {
       turn: 3,
       color: "#8e6060",

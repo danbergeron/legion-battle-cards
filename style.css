@@ -478,3 +478,9 @@ i {
 #submit {
   margin-top: 20px;
 }
+
+footer {
+  text-align: center;
+  opacity: 0.5;
+  font-size: small;
+}
