@@ -7,7 +7,7 @@ function handleSubmit() {
   const jsonText = document.getElementById("json").value.trim(); // Trim whitespace
   if (!jsonText) {
     showError("Error: No JSON entered. Please enter JSON data.");
-    return; // Exit early if the input is empty
+    return;
   }
 
   try {
@@ -34,7 +34,7 @@ function handleSubmit() {
       showSuccess("JSON successfully processed!"); // Show success message
       setTimeout(() => {
         window.location.href = "./json-cards.html"; // Redirect after the success message has been shown
-      }, 2000);
+      }, 1000);
     } else {
       showError(validationMessage);
     }
@@ -115,17 +115,13 @@ function convertNamesToURLs(names, type) {
 }
 
 function showSuccess(message) {
-  const errorDiv = document.getElementById("error-message"); // Make sure you have an element with this ID in your modal
+  const errorDiv = document.getElementById("error-message");
   errorDiv.textContent = message;
   errorDiv.style.display = "none"; // Make the error message invisible
 
-  const successDiv = document.getElementById("success-message"); // Ensure you have this element in your HTML
+  const successDiv = document.getElementById("success-message");
   successDiv.textContent = message;
   successDiv.style.display = "block";
-  // Optionally hide the success message after some time
-  setTimeout(() => {
-    successDiv.style.display = "none";
-  }, 2000); // Hide the success message after 4 seconds
 }
 
 function showError(message) {
@@ -135,7 +131,7 @@ function showError(message) {
     successDiv.style.display = "none";
   }
 
-  const errorDiv = document.getElementById("error-message"); // Make sure you have an element with this ID in your modal
+  const errorDiv = document.getElementById("error-message");
   errorDiv.textContent = message;
   errorDiv.style.display = "block"; // Make the error message visible
 }
